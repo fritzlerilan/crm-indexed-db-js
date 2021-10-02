@@ -67,12 +67,15 @@
 
         objectStore.add(cliente);
         transaction.onerror = () => {
-            console.log('Hubo un error');
+            imprimirAlerta('Hubo un error - Email no valido', 'error');
             transaction.db.close();
         }
         transaction.oncomplete = () => {
             imprimirAlerta('El cliente se creo correctamente');
             transaction.db.close();
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 3000);
         }
 
     }
